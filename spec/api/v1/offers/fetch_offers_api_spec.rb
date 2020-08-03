@@ -6,17 +6,18 @@ RSpec.describe 'GET /api/v1/offers' do
     response.parsed_body
   end
 
-  let(:salesman) { create(:salesman) }
   let(:client) { create(:client) }
   let(:other_client) { create(:client) }
 
-  let!(:client_offers) { create_list(:offer, 3, salesman: salesman, client: client) }
-  let!(:other_client_offers) { create_list(:offer, 2, salesman: salesman, client: other_client) }
+  let!(:client_offers) { create_list(:offer, 3, client: client) }
+  let!(:other_client_offers) { create_list(:offer, 2, client: other_client) }
 
-  describe 'for Salesman' do
-    let(:headers) { { 'X-Access-Token' => salesman.authentication_token } }
+  describe 'for Admin' do
+    let(:headers) { { 'X-Access-Token' => admin.authentication_token } }
 
-    it 'returns offers created by the salesman' do
+    let(:admin) { create(:admin) }
+
+    it 'returns all offers' do
       expect(subject).to match_array [
         match_offer(client_offers.first),
         match_offer(client_offers.second),

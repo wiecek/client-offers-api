@@ -5,9 +5,14 @@ module V1
         headers: Entities::AuthHeader.documentation,
         success: { code: 200, model: Entities::Offer }
       get do
-        error! :unauthorized, 401 unless [Client, Salesman].include?(current_user.class)
-
-        present current_user.offers, with: Entities::Offer
+        case current_user
+        when Admin
+          present Offer.all, with: Entities::Offer
+        when Client
+          present current_user.offers, with: Entities::Offer
+        else
+          error! :unauthorized, 401
+        end
       end
     end
   end
