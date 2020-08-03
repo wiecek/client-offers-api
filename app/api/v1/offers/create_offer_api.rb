@@ -8,11 +8,15 @@ module V1
         requires :quantity, type: Integer, desc: 'Product quantity'
       end
       post do
-        command = ::Offers::Commands::CreateOffer.new(client_id: params[:client_id], quantity: params[:quantity])
-
+        offer_id = SecureRandom.uuid
+        command = ::Offers::Commands::CreateOffer.new(
+          offer_id: offer_id,
+          client_id: params[:client_id],
+          quantity: params[:quantity]
+        )
         Container.resolve(:command_bus).call(command)
 
-        { 'success': true }
+        present Offer.find(offer_id), with: Entities::Offer
       end
     end
   end
