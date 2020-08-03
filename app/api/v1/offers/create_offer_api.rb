@@ -8,10 +8,9 @@ module V1
         requires :quantity, type: Integer, desc: 'Product quantity'
       end
       post do
-        client = Client.find_by(id: params[:client_id])
-        raise DomainError, "Client with ID: #{params[:client_id]} not found" unless client
+        command = ::Offers::Commands::CreateOffer.new(client_id: params[:client_id], quantity: params[:quantity])
 
-        Offer.create(client_id: params[:client_id], quantity: params[:quantity])
+        CommandBus.new.call(command)
 
         { 'success': true }
       end
