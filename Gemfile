@@ -5,6 +5,7 @@ ruby '2.6.6'
 
 gem 'arkency-command_bus'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'devise'
 gem 'dotenv-rails'
 gem 'dry-auto_inject'
 gem 'dry-container'
