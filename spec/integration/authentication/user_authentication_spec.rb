@@ -13,7 +13,7 @@ RSpec.describe 'User Authentication' do
   end
 
   context 'when proper auth headers are provided' do
-    let(:user) { create(:user) }
+    let(:user) { create(:salesman) }
     let(:headers) { { 'X-Access-Token' => user.authentication_token } }
 
     it 'is successful' do

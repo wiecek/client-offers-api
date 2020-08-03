@@ -1,0 +1,2 @@
+class Salesman < User
+end

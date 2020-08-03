@@ -18,7 +18,7 @@ RSpec.describe 'GET /api/v1/clients' do
   def match_client(client)
     match(
       'id' => client.id,
-      'name' => client.name
+      'email' => client.email
     )
   end
 end

@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :client do
+  factory :salesman do
     email { generate(:user_email) }
     password { 'password' }
   end

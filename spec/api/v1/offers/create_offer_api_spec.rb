@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'POST /api/v1/offers' do
-  subject { post '/api/v1/offers', params: params }
+  subject { post '/api/v1/offers', params: params, headers: { 'X-Access-Token' => salesman.authentication_token } }
 
   let(:client_id) { client.id }
+  let(:salesman) { create(:salesman) }
   let(:client) { create(:client) }
   let(:params) { { client_id: client_id, quantity: 0 } }
 
