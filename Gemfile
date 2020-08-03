@@ -5,9 +5,11 @@ ruby '2.6.6'
 
 gem 'arkency-command_bus'
 gem 'bootsnap', '>= 1.4.2', require: false
+gem 'dotenv-rails'
+gem 'dry-auto_inject'
+gem 'dry-container'
 gem 'dry-struct'
 gem 'dry-types'
-gem 'dotenv-rails'
 gem 'grape'
 gem 'grape-entity'
 gem 'grape-swagger-entity'
@@ -17,12 +19,14 @@ gem 'puma'
 gem 'rails'
 
 group :test do
+  gem 'factory_bot_rails'
+  gem 'ffaker'
   gem 'fuubar'
   gem 'rspec-rails'
 end
 
 group :development, :test do
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'guard-rspec'
 end
 
