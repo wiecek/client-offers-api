@@ -19,7 +19,7 @@ RSpec.describe 'POST /api/v1/offers' do
   context 'when executed as a Client' do
     let(:salesman) { create(:client) }
 
-    it 'returns unathorized' do
+    it 'returns unauthorized' do
       subject
 
       expect(response).to have_http_status 401
