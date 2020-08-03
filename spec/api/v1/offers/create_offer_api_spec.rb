@@ -8,18 +8,22 @@ RSpec.describe 'POST /api/v1/offers' do
   let(:client) { create(:client) }
   let(:params) { { client_id: client_id, quantity: 0 } }
 
-  it 'is a successful request' do
-    subject
-
-    expect(response).to have_http_status 201
-  end
-
   it 'creates an Offer assigned to the Salesman' do
     expect { subject }
       .to change { salesman.reload.offers }
       .to match_array [
         have_attributes(client_id: client_id, quantity: 0)
       ]
+  end
+
+  context 'when executed as a Client' do
+    let(:salesman) { create(:client) }
+
+    it 'returns unathorized' do
+      subject
+
+      expect(response).to have_http_status 401
+    end
   end
 
   context 'when client does not exist' do
