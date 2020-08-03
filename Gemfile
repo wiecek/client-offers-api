@@ -16,6 +16,7 @@ gem 'puma'
 gem 'rails'
 
 group :test do
+  gem 'fuubar'
   gem 'rspec-rails'
 end
 
