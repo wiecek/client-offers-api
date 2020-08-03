@@ -7,6 +7,7 @@ gem 'arkency-command_bus'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'dry-struct'
 gem 'dry-types'
+gem 'dotenv-rails'
 gem 'grape'
 gem 'grape-entity'
 gem 'grape-swagger-entity'
