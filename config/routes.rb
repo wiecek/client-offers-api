@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount ClientApi => '/api'
+  mount Api => '/api'
 
   resources :docs, only: [:index]
 end

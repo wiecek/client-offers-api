@@ -1,4 +1,4 @@
-class ClientApi < Grape::API
+class Api < Grape::API
   format :json
   prefix :v1
 
