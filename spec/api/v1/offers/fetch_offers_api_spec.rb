@@ -44,7 +44,10 @@ RSpec.describe 'GET /api/v1/offers' do
     match(
       'client' => a_hash_including('id' => offer.client.id),
       'salesman' => a_hash_including('id' => offer.salesman.id),
-      'quantity' => offer.quantity
+      'quantity' => offer.quantity,
+      'width' => offer.width,
+      'height' => offer.height,
+      'length' => offer.length
     )
   end
 end
