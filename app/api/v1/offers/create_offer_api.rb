@@ -11,6 +11,7 @@ module V1
         offer_id = SecureRandom.uuid
         command = ::Offers::Commands::CreateOffer.new(
           offer_id: offer_id,
+          salesman_id: current_user.id,
           client_id: params[:client_id],
           quantity: params[:quantity]
         )

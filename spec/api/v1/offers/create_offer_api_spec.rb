@@ -14,6 +14,14 @@ RSpec.describe 'POST /api/v1/offers' do
     expect(response).to have_http_status 201
   end
 
+  it 'creates an Offer assigned to the Salesman' do
+    expect { subject }
+      .to change { salesman.reload.offers }
+      .to match_array [
+        have_attributes(client_id: client_id, quantity: 0)
+      ]
+  end
+
   context 'when client does not exist' do
     let(:client_id) { SecureRandom.uuid }
 
