@@ -7,6 +7,7 @@ class Api < Grape::API
   end
 
   mount V1::OffersApi
+  mount V1::ClientsApi
 
   add_swagger_documentation
 end
