@@ -2,6 +2,7 @@ module V1
   module Offers
     class AcceptOfferApi < Grape::API
       desc 'Accept Offer',
+        headers: Entities::AuthHeader.documentation,
         success: { code: 201, model: Entities::Offer }
       put do
         unless current_user.is_a?(Client) && current_user.offers.exists?(id: params[:offer_id])

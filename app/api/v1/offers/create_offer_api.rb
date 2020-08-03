@@ -2,6 +2,7 @@ module V1
   module Offers
     class CreateOfferApi < Grape::API
       desc 'Creates an offer for the client',
+        headers: Entities::AuthHeader.documentation,
         success: { code: 201, model: Entities::Offer }
       params do
         requires :client_id, type: String, desc: 'ID of the Client'
