@@ -6,13 +6,13 @@ RSpec.describe 'POST /api/v1/offers' do
   let(:client_id) { client.id }
   let(:salesman) { create(:salesman) }
   let(:client) { create(:client) }
-  let(:params) { { client_id: client_id, quantity: 0 } }
+  let(:params) { { client_id: client_id, quantity: 200, width: 100, height: 40, length: 75 } }
 
   it 'creates an Offer assigned to the Salesman' do
     expect { subject }
       .to change { salesman.reload.offers }
       .to match_array [
-        have_attributes(client_id: client_id, quantity: 0)
+        have_attributes(client_id: client_id, quantity: 200)
       ]
   end
 

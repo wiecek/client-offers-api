@@ -5,6 +5,9 @@ module Offers
       attribute :salesman_id, Types::UUID
       attribute :client_id, Types::UUID
       attribute :quantity, Types::Strict::Integer
+      attribute :width, Types::Strict::Integer
+      attribute :height, Types::Strict::Integer
+      attribute :length, Types::Strict::Integer
 
       class Handler
         def call(command)
@@ -15,7 +18,10 @@ module Offers
             id: command.offer_id,
             salesman_id: command.salesman_id,
             client: client,
-            quantity: command.quantity
+            quantity: command.quantity,
+            width: command.width,
+            height: command.height,
+            length: command.length
           )
         end
       end
