@@ -1,4 +1,4 @@
-class ClientApi < Grape::API
+class Api < Grape::API
   format :json
   prefix :v1
 
@@ -7,6 +7,7 @@ class ClientApi < Grape::API
   end
 
   mount V1::OffersApi
+  mount V1::ClientsApi
 
   add_swagger_documentation
 end
