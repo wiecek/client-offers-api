@@ -8,6 +8,7 @@ class CommandBus < Arkency::CommandBus
 
   def register_commands(bus)
     commands = [
+      Offers::Commands::AcceptOffer,
       Offers::Commands::CreateOffer
     ]
 
