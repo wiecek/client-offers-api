@@ -6,6 +6,7 @@ module V1
 
     namespace :offers do
       mount Offers::CreateOfferApi
+      mount Offers::FetchOffersApi
 
       route_param :offer_id do
         mount Offers::AcceptOfferApi
