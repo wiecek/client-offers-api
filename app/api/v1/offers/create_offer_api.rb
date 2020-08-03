@@ -10,7 +10,7 @@ module V1
       post do
         command = ::Offers::Commands::CreateOffer.new(client_id: params[:client_id], quantity: params[:quantity])
 
-        CommandBus.new.call(command)
+        Container.resolve(:command_bus).call(command)
 
         { 'success': true }
       end
