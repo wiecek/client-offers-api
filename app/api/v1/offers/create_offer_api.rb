@@ -8,6 +8,8 @@ module V1
         requires :quantity, type: Integer, desc: 'Product quantity'
       end
       post do
+        error! :unauthorized, 401 unless current_user.is_a?(Salesman)
+
         offer_id = SecureRandom.uuid
         command = ::Offers::Commands::CreateOffer.new(
           offer_id: offer_id,
