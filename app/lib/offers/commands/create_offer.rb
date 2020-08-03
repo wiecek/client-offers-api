@@ -1,7 +1,7 @@
 module Offers
   module Commands
     class CreateOffer < Command
-      attribute :client_id, Types::Strict::Integer
+      attribute :client_id, Types::UUID
       attribute :quantity, Types::Strict::Integer
 
       class Handler

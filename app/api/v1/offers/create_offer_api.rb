@@ -4,7 +4,7 @@ module V1
       desc 'Creates an offer for the client',
         success: { code: 201, model: Entities::Offer }
       params do
-        requires :client_id, type: Integer, desc: 'ID of the Client'
+        requires :client_id, type: String, desc: 'ID of the Client'
         requires :quantity, type: Integer, desc: 'Product quantity'
       end
       post do

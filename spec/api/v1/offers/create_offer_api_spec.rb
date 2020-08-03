@@ -14,7 +14,7 @@ RSpec.describe 'POST /api/v1/offers' do
   end
 
   context 'when client does not exist' do
-    let(:client_id) { client.id + 1 }
+    let(:client_id) { SecureRandom.uuid }
 
     it 'returns an error' do
       subject
